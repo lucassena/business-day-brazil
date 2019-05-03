@@ -1,0 +1,21 @@
+{
+    "name": "lucasmartins/business-day-brazil",
+    "description": "Recupera informações sobre dias úteis do Brasil.",
+    "keywords": ["date", "datetime"],
+    "homepage": "https://github.com/lucassena/business-day-brazil",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lucas Martins",
+            "email": "lucasfsmartins@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "BusinessDayBrazil\\": "src/"
+        }
+    }
+}
