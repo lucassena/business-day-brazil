@@ -11,4 +11,7 @@ $vencimento = BusinessDayBrazil::nextDay((new DateTime('2019-02-28'))->modify('+
 echo $vencimento->format('d/m/Y') . PHP_EOL;
 $diferenca = (new DateTime('2019-02-28'))->diff($vencimento);
 echo $diferenca->format('%R%a days') . PHP_EOL;
-echo (new DateTime())->diff((new DateTime())->modify('+3 weekdays'))->format('%R%a days');
+echo (new DateTime())->diff((new DateTime())->modify('+3 weekdays'))->format('%R%a days') . PHP_EOL;
+
+var_dump(BusinessDayBrazil::isBusinessDay());
+var_dump(BusinessDayBrazil::holidays());
