@@ -28,14 +28,16 @@ class BusinessDayBrazil
      */
     public static function nextDay(DateTime $date = null)
     {
+        // se não for definido $date
         if ($date === null) {
-            $date = new DateTime('now');
-            $date->modify('+1 weekday');
-        }
-
-        if (\in_array($date->getTimestamp(), self::holidays($date->format('Y')))) {
-            $date->modify('+1 weekday');
-            $date = self::nextDay($date);
+            $date = new DateTime('now'); // define a data atual
+            $date->modify('+1 weekday'); // e a modifica para o próximo dia da semana
+        } else {
+            // caso $date não for um dia útil
+            if (!self::isBusinessDay($date)) {
+                $date->modify('+1 weekday'); // a define para o próximo dia da semana
+                $date = self::nextDay($date); // e re-executa a função
+            }
         }
 
         return $date;
@@ -55,7 +57,7 @@ class BusinessDayBrazil
         }
 
         if (!\in_array($date->format('N'), array(6, 7))) {
-            if (!\in_array($date->getTimestamp(), self::holidays())) {
+            if (!\in_array($date->getTimestamp(), self::holidays($date->format('Y')))) {
                 return true;
             }
         }
